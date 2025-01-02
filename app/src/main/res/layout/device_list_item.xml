@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DeviceListItem">
+
+    <data>
+        <variable name="name" type="String" />
+        <variable name="mac" type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:padding="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/item_shape">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_bluetooth_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{name}"
+            android:textColor="@color/card_text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/textMac"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            tools:text="Device's name" />
+
+        <TextView
+            android:id="@+id/textMac"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{mac}"
+            android:textColor="@color/card_text2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintTop_toBottomOf="@id/textName"
+            tools:text="00:00:00:00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
