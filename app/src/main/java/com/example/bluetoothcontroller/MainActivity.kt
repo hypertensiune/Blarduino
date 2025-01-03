@@ -1,23 +1,19 @@
 package com.example.bluetoothcontroller
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
-import android.bluetooth.BluetoothManager
-import android.bluetooth.BluetoothSocket
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.core.app.ActivityCompat
+import android.view.View
+import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.coroutines.launch
 import java.util.UUID
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+
         setContentView(R.layout.activity_main)
 
         lifecycleScope.launch {
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             val inflater = navHostFragment.navController.navInflater
             val graph = inflater.inflate(R.navigation.navigation)
 
-            graph.setStartDestination(R.id.device_list)
+            graph.setStartDestination(R.id.home)
             navHostFragment.navController.setGraph(graph, bundleOf())
         }
 
