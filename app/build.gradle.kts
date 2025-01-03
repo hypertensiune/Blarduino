@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bluetoothcontroller"
+    namespace = "com.example.blarduino"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.bluetoothcontroller"
+        applicationId = "com.example.blarduino"
         minSdk = 28
         targetSdk = 34
         versionCode = 1

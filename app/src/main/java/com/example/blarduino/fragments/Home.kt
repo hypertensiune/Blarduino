@@ -1,4 +1,4 @@
-package com.example.bluetoothcontroller.fragments
+package com.example.blarduino.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.bluetoothcontroller.R
-import com.example.bluetoothcontroller.databinding.FragmentHomeBinding
-import com.example.bluetoothcontroller.viewmodels.HomeViewModel
+import com.example.blarduino.R
+import com.example.blarduino.databinding.FragmentHomeBinding
+import com.example.blarduino.viewmodels.HomeViewModel
 
 class Home : Fragment() {
 

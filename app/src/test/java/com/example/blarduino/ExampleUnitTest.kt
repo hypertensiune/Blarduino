@@ -1,4 +1,4 @@
-package com.example.bluetoothcontroller
+package com.example.blarduino
 
 import org.junit.Test
 

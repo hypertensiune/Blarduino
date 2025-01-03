@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.bluetoothcontroller.viewmodels.DeviceListViewModel" />
+            type="com.example.blarduino.viewmodels.DeviceListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

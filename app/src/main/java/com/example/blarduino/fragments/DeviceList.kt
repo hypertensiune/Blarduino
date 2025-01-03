@@ -1,4 +1,4 @@
-package com.example.bluetoothcontroller.fragments
+package com.example.blarduino.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bluetoothcontroller.DeviceListAdapter
-import com.example.bluetoothcontroller.R
-import com.example.bluetoothcontroller.databinding.FragmentDeviceListBinding
-import com.example.bluetoothcontroller.viewmodels.DeviceListViewModel
+import com.example.blarduino.DeviceListAdapter
+import com.example.blarduino.R
+import com.example.blarduino.databinding.FragmentDeviceListBinding
+import com.example.blarduino.viewmodels.DeviceListViewModel
 
 class DeviceList : Fragment() {
 

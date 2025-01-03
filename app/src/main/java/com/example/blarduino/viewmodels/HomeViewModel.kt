@@ -1,9 +1,9 @@
-package com.example.bluetoothcontroller.viewmodels
+package com.example.blarduino.viewmodels
 
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.example.bluetoothcontroller.R
+import com.example.blarduino.R
 
 class HomeViewModel(private val navController: NavController) : ViewModel() {
 

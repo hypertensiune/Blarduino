@@ -1,4 +1,4 @@
-package com.example.bluetoothcontroller
+package com.example.blarduino
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

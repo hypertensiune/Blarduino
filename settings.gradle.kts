@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "BluetoothController"
+rootProject.name = "Blarduino"
 include(":app")
  

@@ -1,4 +1,4 @@
-package com.example.bluetoothcontroller.viewmodels
+package com.example.blarduino.viewmodels
 
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter

@@ -1,14 +1,12 @@
-package com.example.bluetoothcontroller
+package com.example.blarduino
 
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothDevice
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bluetoothcontroller.databinding.DeviceListItemBinding
+import com.example.blarduino.databinding.DeviceListItemBinding
 
 class DeviceListAdapter(
     context: Context,

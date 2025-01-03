@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.bluetoothcontroller.viewmodels.HomeViewModel" />
+            type="com.example.blarduino.viewmodels.HomeViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

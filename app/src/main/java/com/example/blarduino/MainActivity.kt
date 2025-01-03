@@ -1,12 +1,10 @@
-package com.example.bluetoothcontroller
+package com.example.blarduino
 
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothDevice
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
