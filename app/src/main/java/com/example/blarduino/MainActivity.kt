@@ -2,6 +2,8 @@ package com.example.blarduino
 
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothDevice
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -23,7 +25,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val decorView = window.decorView
+            var uiVisibility = decorView.systemUiVisibility
+
+            // Check for the current theme and adjust the status bar icons accordingly
+            uiVisibility = if (isDarkTheme()) {
+                // Dark theme: Use dark icons
+                uiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
+            } else {
+                // Light theme: Use light icons
+                uiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            }
+            decorView.systemUiVisibility = uiVisibility
+        }
 
         setContentView(R.layout.activity_main)
 
@@ -71,6 +86,11 @@ class MainActivity : AppCompatActivity() {
 //
 //        val thread = ConnectThread(device!!)
 //        thread.start()
+    }
+
+    private fun isDarkTheme(): Boolean {
+        val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return nightModeFlags == Configuration.UI_MODE_NIGHT_YES
     }
 
     private inner class ConnectThread(device: BluetoothDevice) : Thread() {

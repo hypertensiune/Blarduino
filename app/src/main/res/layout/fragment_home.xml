@@ -1,5 +1,4 @@
 <layout>
-
     <data>
         <variable
             name="viewModel"
@@ -11,11 +10,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background2"
-        android:backgroundTint="@color/whiteTransparent"
-        android:backgroundTintMode="multiply"
+        android:background="@drawable/background"
         android:orientation="vertical"
-        android:fitsSystemWindows="true"
         tools:context=".MainActivity">
 
         <RelativeLayout
@@ -29,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:text="Blarduino"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/header1"
                 android:textSize="30sp" />
 
             <TextView
@@ -39,7 +35,7 @@
                 android:layout_below="@+id/textView"
                 android:text="Arduino bluetooth controller"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/header"
                 android:textSize="22sp" />
 
         </RelativeLayout>
@@ -61,8 +57,8 @@
                 android:background="@drawable/square_button"
                 android:text="Devices"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
-                app:backgroundTint="@color/container"
+                android:textColor="@color/card_text"
+                app:backgroundTint="@color/card"
                 android:drawableStart="@drawable/baseline_bluetooth_24"
                 android:drawableTint="#ffffff"
                 android:paddingStart="15dp"
@@ -77,8 +73,8 @@
                 android:background="@drawable/square_button"
                 android:text="About"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
-                app:backgroundTint="@color/container"
+                android:textColor="@color/card_text"
+                app:backgroundTint="@color/card"
                 android:elevation="5dp" />
 
             <ImageView
@@ -88,7 +84,7 @@
                 android:layout_marginEnd="15dp"
                 android:layout_below="@id/button"
                 android:background="@drawable/square_button"
-                android:backgroundTint="@color/container"
+                android:backgroundTint="@color/card"
                 android:src="@drawable/arduino"
                 android:elevation="5dp"/>
 
@@ -102,8 +98,8 @@
                 android:background="@drawable/square_button"
                 android:text="Terminal"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
-                app:backgroundTint="@color/container"
+                android:textColor="@color/card_text"
+                app:backgroundTint="@color/card"
                 android:drawableTop="@drawable/baseline_terminal_24"
                 android:paddingTop="15dp"
                 android:elevation="5dp" />
@@ -117,8 +113,8 @@
                 android:background="@drawable/square_button"
                 android:text="Gamepad"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
-                app:backgroundTint="@color/container"
+                android:textColor="@color/card_text"
+                app:backgroundTint="@color/card"
                 android:drawableTop="@drawable/baseline_gamepad_24"
                 android:paddingTop="15dp"
                 android:elevation="5dp"/>

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
+import android.view.View
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,5 +21,9 @@ class DeviceListViewModel(private val navController: NavController) : ViewModel(
 
         val pairedDevices: Set<BluetoothDevice>? = adapter?.bondedDevices
         devices.value = pairedDevices!!
+    }
+
+    fun onBackClick(view: View) {
+        navController.popBackStack()
     }
 }
