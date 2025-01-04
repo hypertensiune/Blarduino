@@ -1,16 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.BluetoothController" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-
-<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
-<!--        <item name="android:windowLightStatusBar">true</item>-->
+        <item name="android:background">@color/background</item>
+        <item name="android:textColor">@color/card_text</item>
+        <item name="android:titleTextColor">@color/card_text</item>
 
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
-<!--        <item name="android:statusBarColor">#FFFFFF</item>-->
+
+        <item name="alertDialogTheme">@style/Popup</item>
+        <item name="preferenceTheme">@style/PrefsTheme</item>
     </style>
 
     <style name="Theme.BluetoothController" parent="Base.Theme.BluetoothController" />
+
+    <style name="Popup" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:dialogCornerRadius">10dp</item>
+        <item name="android:background">@color/card</item>
+    </style>
+
+    <style name="PrefsTheme" parent="PreferenceThemeOverlay.v14.Material">
+        <item name="android:layout">@layout/fragment_settings</item>
+        <item name="android:listPreferredItemPaddingLeft">60dp</item>
+        <item name="android:listPreferredItemPaddingRight">20dp</item>
+    </style>
 </resources>

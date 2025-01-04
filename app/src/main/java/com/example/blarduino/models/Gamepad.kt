@@ -1,6 +1,7 @@
 package com.example.blarduino.models
 
 import android.content.Context
+import androidx.preference.PreferenceManager
 import java.util.EnumMap
 
 class Gamepad(context: Context) {
@@ -16,18 +17,20 @@ class Gamepad(context: Context) {
         X
     }
 
-    data class Mapping(var press: Int, var release: Int)
+    data class Mapping(var press: String, var release: String)
 
     private var mappings: MutableMap<Button, Mapping> = EnumMap(Button::class.java)
 
     init {
-        val preferences = context.getSharedPreferences("Settings", Context.MODE_PRIVATE)
+//        val preferences = context.getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
 
         for(button in Button.entries) {
-            val press = preferences.getInt("${button}_PRESS", -1)
-            val release = preferences.getInt("${button}_RELEASE", -1)
+            val press = preferences.getString("${button}_PRESS", "")
+            val release = preferences.getString("${button}_RELEASE", "")
 
-            mappings[button] = Mapping(press, release)
+            println("$button $press $release")
+            mappings[button] = Mapping(press!!, release!!)
         }
     }
 

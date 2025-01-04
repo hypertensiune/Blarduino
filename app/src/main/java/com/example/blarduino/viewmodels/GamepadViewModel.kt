@@ -13,10 +13,12 @@ class GamepadViewModel(private val navController: NavController, context: Contex
 
     fun gamepadButtonPress(button: Gamepad.Button) {
         val msg = model.getButtonPressMapping(button)
+        println("press $msg")
     }
 
     fun gamepadButtonRelease(button: Gamepad.Button) {
         val msg = model.getButtonReleaseMapping(button)
+        println("release $msg")
     }
 
     fun onEnableEdditingClick(view: View) {

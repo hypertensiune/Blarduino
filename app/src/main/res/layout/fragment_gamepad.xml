@@ -54,7 +54,6 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/dpad_up"
-                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.DPAD_UP)}"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginStart="72dp"
@@ -69,7 +68,6 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/dpad_down"
-                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.DPAD_DOWN)}"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginTop="-15dp"
@@ -86,7 +84,6 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/dpad_left"
-                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.DPAD_LEFT)}"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginStart="15dp"
@@ -102,7 +99,6 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/dpad_right"
-                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.DPAD_RIGHT)}"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginStart="-15dp"
@@ -136,7 +132,6 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/triangle"
-                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.TRIANGLE)}"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginStart="72dp"
@@ -150,7 +145,6 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/x"
-                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.X)}"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_below="@id/middle"
@@ -181,7 +175,6 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/circle"
-                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.CIRCLE)}"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_toEndOf="@id/middle"

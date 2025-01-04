@@ -1,0 +1,150 @@
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        app:title="Triangle"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="TRIANGLE_PRESS"
+            app:title="Press"
+            android:summary="Command to be sent on button press"
+            android:defaultValue="F"
+            app:iconSpaceReserved="false"/>
+
+        <EditTextPreference
+            android:key="TRIANGLE_RELEASE"
+            app:title="Release"
+            android:summary="Command to be sent on button release"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Circle"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="CIRCLE_PRESS"
+            app:title="Press"
+            android:summary="Command to be sent on button press"
+            app:iconSpaceReserved="false"/>
+
+        <EditTextPreference
+            android:key="CIRCLE_RELEASE"
+            app:title="Release"
+            android:summary="Command to be sent on button release"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="X"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="X_PRESS"
+            app:title="Press"
+            android:summary="Command to be sent on button press"
+            app:iconSpaceReserved="false"/>
+
+        <EditTextPreference
+            android:key="X_RELEASE"
+            app:title="Release"
+            android:summary="Command to be sent on button release"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Square"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="SQUARE_PRESS"
+            app:title="Press"
+            android:summary="Command to be sent on button press"
+            app:iconSpaceReserved="false"/>
+
+        <EditTextPreference
+            android:key="SQUARE_RELEASE"
+            app:title="Release"
+            android:summary="Command to be sent on button release"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Up"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="DPAD_UP_PRESS"
+            app:title="Press"
+            android:summary="Command to be sent on button press"
+            app:iconSpaceReserved="false"/>
+
+        <EditTextPreference
+            android:key="DPAD_UP_RELEASE"
+            app:title="Release"
+            android:summary="Command to be sent on button release"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Right"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="DPAD_RIGHT_PRESS"
+            app:title="Press"
+            android:summary="Command to be sent on button press"
+            app:iconSpaceReserved="false"/>
+
+        <EditTextPreference
+            android:key="DPAD_RIGHT_RELEASE"
+            app:title="Release"
+            android:summary="Command to be sent on button release"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Down"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="DPAD_DOWN_PRESS"
+            app:title="Press"
+            android:summary="Command to be sent on button press"
+            app:iconSpaceReserved="false"/>
+
+        <EditTextPreference
+            android:key="DPAD_DOWN_RELEASE"
+            app:title="Release"
+            android:summary="Command to be sent on button release"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Left"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="DPAD_LEFT_PRESS"
+            app:title="Press"
+            android:summary="Command to be sent on button press"
+            app:iconSpaceReserved="false"/>
+
+        <EditTextPreference
+            android:key="DPAD_LEFT_RELEASE"
+            app:title="Release"
+            android:summary="Command to be sent on button release"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

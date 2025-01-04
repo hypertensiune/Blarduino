@@ -17,7 +17,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="100dp"
+            android:background="@android:color/transparent">
 
             <TextView
                 android:id="@+id/textView"
@@ -26,6 +27,7 @@
                 android:text="Blarduino"
                 android:textAlignment="center"
                 android:textColor="@color/header1"
+                android:background="@android:color/transparent"
                 android:textSize="30sp" />
 
             <TextView
@@ -36,6 +38,7 @@
                 android:text="Arduino bluetooth controller"
                 android:textAlignment="center"
                 android:textColor="@color/header"
+                android:background="@android:color/transparent"
                 android:textSize="22sp" />
 
         </RelativeLayout>
@@ -45,7 +48,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center|top"
-            android:paddingTop="160dp">
+            android:paddingTop="160dp"
+            android:background="@android:color/transparent">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"
