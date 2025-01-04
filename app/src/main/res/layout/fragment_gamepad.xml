@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.Gamepad">
+
+    <data>
+        <import type="com.example.blarduino.models.Gamepad.Button"/>
+        <variable
+            name="viewModel"
+            type="com.example.blarduino.viewmodels.GamepadViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewModel.onBackButtonClick}"
+                android:src="@drawable/baseline_arrow_back_24"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:onClick="@{viewModel.onEnableEdditingClick}"
+                android:src="@drawable/baseline_settings_24"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/background">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dpad_up"
+                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.DPAD_UP)}"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="72dp"
+                    android:layout_marginBottom="-15dp"
+                    app:backgroundTint="@color/card"
+                    android:background="@drawable/gamepad_button_up"
+                    app:icon="@drawable/baseline_keyboard_arrow_up_24"
+                    app:iconTint="@color/card_text"
+                    app:iconPadding="0dp"
+                    app:iconGravity="top"
+                    app:iconSize="36dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dpad_down"
+                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.DPAD_DOWN)}"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginTop="-15dp"
+                    android:layout_below="@id/dpad_middle"
+                    android:layout_alignEnd="@id/dpad_middle"
+                    app:backgroundTint="@color/card"
+                    android:background="@drawable/gamepad_button_up"
+                    android:rotation="180"
+                    app:icon="@drawable/baseline_keyboard_arrow_up_24"
+                    app:iconTint="@color/card_text"
+                    app:iconPadding="0dp"
+                    app:iconGravity="top"
+                    app:iconSize="36dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dpad_left"
+                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.DPAD_LEFT)}"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_alignTop="@id/dpad_middle"
+                    app:backgroundTint="@color/card"
+                    android:background="@drawable/gamepad_button_up"
+                    android:rotation="270"
+                    app:icon="@drawable/baseline_keyboard_arrow_up_24"
+                    app:iconTint="@color/card_text"
+                    app:iconPadding="0dp"
+                    app:iconGravity="top"
+                    app:iconSize="36dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dpad_right"
+                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.DPAD_RIGHT)}"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="-15dp"
+                    android:layout_toEndOf="@id/dpad_middle"
+                    android:layout_alignTop="@id/dpad_middle"
+                    app:backgroundTint="@color/card"
+                    android:background="@drawable/gamepad_button_up"
+                    android:rotation="90"
+                    app:icon="@drawable/baseline_keyboard_arrow_up_24"
+                    app:iconTint="@color/card_text"
+                    app:iconPadding="0dp"
+                    app:iconGravity="top"
+                    app:iconSize="36dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dpad_middle"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_below="@id/dpad_up"
+                    android:layout_alignEnd="@id/dpad_up"
+                    android:background="@android:color/transparent" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/background">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/triangle"
+                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.TRIANGLE)}"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="72dp"
+                    android:background="@drawable/round_button"
+                    app:backgroundTint="@color/card"
+                    app:icon="@drawable/gamepad_triangle"
+                    app:iconTint="@color/card_text"
+                    app:iconGravity="textStart"
+                    app:iconSize="50dp"
+                    app:iconPadding="0dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/x"
+                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.X)}"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_below="@id/middle"
+                    android:layout_alignEnd="@id/middle"
+                    android:backgroundTint="@color/card"
+                    android:background="@drawable/round_button"
+                    app:backgroundTint="@color/card"
+                    app:icon="@drawable/gamepad_x"
+                    app:iconTint="@color/card_text"
+                    app:iconGravity="textStart"
+                    app:iconSize="50dp"
+                    app:iconPadding="0dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/square"
+                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.SQUARE)}"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_alignTop="@id/middle"
+                    android:backgroundTint="@color/card"
+                    android:background="@drawable/round_button"
+                    app:backgroundTint="@color/card"
+                    app:icon="@drawable/gamepad_square"
+                    app:iconTint="@color/card_text"
+                    app:iconGravity="textStart"
+                    app:iconSize="50dp"
+                    app:iconPadding="0dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/circle"
+                    android:onClick="@{() -> viewModel.gamepadButtonPress(Button.CIRCLE)}"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_toEndOf="@id/middle"
+                    android:layout_alignTop="@id/middle"
+                    android:backgroundTint="@color/card"
+                    android:background="@drawable/round_button"
+                    app:backgroundTint="@color/card"
+                    app:icon="@drawable/gamepad_circle"
+                    app:iconTint="@color/card_text"
+                    app:iconGravity="textStart"
+                    app:iconSize="50dp"
+                    app:iconPadding="0dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/middle"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_below="@id/triangle"
+                    android:layout_alignEnd="@id/triangle"
+                    android:background="@android:color/transparent" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

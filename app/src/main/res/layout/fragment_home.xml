@@ -106,6 +106,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/materialButton2"
+                android:onClick="@{viewModel.onGamepadButtonClick}"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_below="@id/materialButton"

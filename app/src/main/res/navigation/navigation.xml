@@ -18,6 +18,24 @@
         <action
             android:id="@+id/home_to_devices"
             app:destination="@id/device_list"/>
+        <action
+            android:id="@+id/home_to_gamepad"
+            app:destination="@id/gamepad"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/gamepad"
+        android:name="com.example.blarduino.fragments.Gamepad"
+        tools:layout="@layout/fragment_gamepad">
+
+        <action
+            android:id="@+id/gamepad_to_settings"
+            app:destination="@id/settings"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.blarduino.fragments.Settings" />
 
 </navigation>

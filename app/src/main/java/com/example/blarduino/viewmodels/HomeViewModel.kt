@@ -10,4 +10,8 @@ class HomeViewModel(private val navController: NavController) : ViewModel() {
     fun onDevicesButtonClick(view: View) {
         navController.navigate(R.id.home_to_devices)
     }
+
+    fun onGamepadButtonClick(view: View) {
+        navController.navigate(R.id.home_to_gamepad)
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.blarduino.fragments
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.service.voice.VoiceInteractionSession.ActivityId
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +27,8 @@ class Home : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         return binding.root
     }

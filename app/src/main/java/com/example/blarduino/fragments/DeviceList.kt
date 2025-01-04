@@ -1,5 +1,6 @@
 package com.example.blarduino.fragments
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,6 +36,8 @@ class DeviceList : Fragment() {
             }
             binding.deviceListRecyclerView.adapter = adapter
         }
+
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         return binding.root
     }

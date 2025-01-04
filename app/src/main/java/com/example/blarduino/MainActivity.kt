@@ -5,12 +5,14 @@ import android.bluetooth.BluetoothDevice
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
+import com.example.blarduino.models.Gamepad
 import kotlinx.coroutines.launch
 import java.util.UUID
 
