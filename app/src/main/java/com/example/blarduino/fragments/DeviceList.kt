@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.blarduino.DeviceListAdapter
@@ -24,7 +25,8 @@ class DeviceList : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_device_list, container, false)
 
-        val viewModel = DeviceListViewModel(container!!.findNavController())
+//        val viewModel = DeviceListViewModel(container!!.findNavController())
+        val viewModel = ViewModelProvider(requireActivity(), DeviceListViewModel.Factory(container!!.findNavController()))[DeviceListViewModel::class.java]
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -32,7 +34,7 @@ class DeviceList : Fragment() {
 
         viewModel.devices.observe(viewLifecycleOwner) {
             val adapter = DeviceListAdapter(requireContext(), viewModel.devices.value) {
-
+                binding.viewModel.onDeviceItemClick(it)
             }
             binding.deviceListRecyclerView.adapter = adapter
         }

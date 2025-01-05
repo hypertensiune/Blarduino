@@ -11,7 +11,7 @@ import com.example.blarduino.databinding.DeviceListItemBinding
 class DeviceListAdapter(
     context: Context,
     private val devices: Set<BluetoothDevice>?,
-    private val onItemClick: (Any) -> Unit
+    private val onItemClick: (String) -> Unit
 ) : RecyclerView.Adapter<DeviceListAdapter.ViewHolder>() {
 
     private lateinit var binding: DeviceListItemBinding
@@ -36,6 +36,9 @@ class DeviceListAdapter(
         return ViewHolder(binding) { element, binding ->
             binding.name = element.name
             binding.mac = element.address
+            binding.root.setOnClickListener {
+                onItemClick(element.address)
+            }
         }
     }
 }
