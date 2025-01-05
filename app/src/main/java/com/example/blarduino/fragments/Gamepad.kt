@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.constraintlayout.widget.ConstraintSet.Motion
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.blarduino.viewmodels.GamepadViewModel
 import com.example.blarduino.R
@@ -29,11 +31,12 @@ class Gamepad : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_gamepad, container, false)
 
-        val viewModel = GamepadViewModel(container!!.findNavController(), requireContext())
+//        val viewModel = GamepadViewModel(container!!.findNavController(), requireContext())
+        val viewModel = ViewModelProvider(requireActivity(), GamepadViewModel.Factory(container!!.findNavController()))[GamepadViewModel::class.java]
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+//        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         setButtonTouchListener(binding.dpadDown, Gamepad.Button.DPAD_DOWN)
