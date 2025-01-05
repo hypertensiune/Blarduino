@@ -6,6 +6,7 @@ import android.service.voice.VoiceInteractionSession.ActivityId
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -29,6 +30,7 @@ class Home : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         return binding.root
     }
