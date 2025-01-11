@@ -7,4 +7,6 @@
     <color name="card_text2">#8b8b8b</color>
     <color name="header">#c9c9c9</color>
     <color name="header1">#FFFFFF</color>
+    <color name="selected">#0073DD</color>
+    <color name="textInputColor">#36343b</color>
 </resources>

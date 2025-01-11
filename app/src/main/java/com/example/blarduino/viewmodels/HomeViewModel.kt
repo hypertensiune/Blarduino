@@ -14,4 +14,8 @@ class HomeViewModel(private val navController: NavController) : ViewModel() {
     fun onGamepadButtonClick(view: View) {
         navController.navigate(R.id.home_to_gamepad)
     }
+
+    fun onTerminalButtonClick(view: View) {
+        navController.navigate(R.id.home_to_terminal)
+    }
 }

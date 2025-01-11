@@ -21,6 +21,9 @@
         <action
             android:id="@+id/home_to_gamepad"
             app:destination="@id/gamepad"/>
+        <action
+            android:id="@+id/home_to_terminal"
+            app:destination="@id/terminal"/>
     </fragment>
 
     <fragment
@@ -31,6 +34,13 @@
         <action
             android:id="@+id/gamepad_to_settings"
             app:destination="@id/settings"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/terminal"
+        android:name="com.example.blarduino.fragments.Terminal"
+        tools:layout="@layout/fragment_terminal">
 
     </fragment>
 

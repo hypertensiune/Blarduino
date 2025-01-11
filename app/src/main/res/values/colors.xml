@@ -8,4 +8,6 @@
     <color name="card_text2">#8b8b8b</color>
     <color name="header">#1F1F1F</color>
     <color name="header1">#000000</color>
+    <color name="selected">#0073DD</color>
+    <color name="textInputColor">#36343b</color>
 </resources>
