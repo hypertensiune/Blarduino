@@ -22,8 +22,13 @@ class DeviceListViewModel(
     private val bluetooth: Bluetooth
 ) : ViewModel(), Bluetooth.ConnectionStateListener {
 
-    var devices: Set<BluetoothDevice>? = null
-    val connectionState: MutableLiveData<Pair<Int, Boolean>> = MutableLiveData<Pair<Int, Boolean>>()
+    companion object {
+        const val CONNECTION_SUCCESSFUL = 0
+        const val CONNECTION_FAILED = 1
+    }
+
+    var devices: Set<Bluetooth.Device>? = null
+    val connectionState: MutableLiveData<Int> = MutableLiveData()
 
     class Factory(private val navController: NavController) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
@@ -38,25 +43,18 @@ class DeviceListViewModel(
     }
 
     init {
-        val bluetoothManager = getSystemService(navController.context, BluetoothManager::class.java)
-        val adapter: BluetoothAdapter? = bluetoothManager?.adapter
-
-        val pairedDevices: Set<BluetoothDevice>? = adapter?.bondedDevices
-        devices = pairedDevices!!
-
+        devices = bluetooth.getPairedDevices()
         bluetooth.addConnectionStateListener(this)
     }
 
-    override fun onConnectionSuccessful(index: Int, previousConnection: Boolean) {
-        connectionState.postValue(Pair(index, previousConnection))
+    override fun onConnectionSuccessful(index: Int) {
+        devices?.forEach { it.connected = false }
+        devices?.elementAtOrNull(index)?.connected = true
+        connectionState.postValue(CONNECTION_SUCCESSFUL)
     }
 
     override fun onConnectionFailed() {
-        connectionState.postValue(Pair(-1, false))
-    }
-
-    fun bluetoothAlreadyConnected(): Int {
-        return bluetooth.connectedDeviceIndex()
+        connectionState.postValue(CONNECTION_FAILED)
     }
 
     fun onDeviceItemClick(deviceAddress: String) {

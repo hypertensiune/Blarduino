@@ -12,8 +12,7 @@ import com.example.blarduino.databinding.DeviceListItemBinding
 
 class DeviceListAdapter(
     private val context: Context,
-    private val devices: Set<BluetoothDevice>?,
-    private val connectedDeviceIndex: Int,
+    private val devices: Set<Bluetooth.Device>?,
     private val onItemClick: (String) -> Unit
 ) : RecyclerView.Adapter<DeviceListAdapter.ViewHolder>() {
 
@@ -22,9 +21,9 @@ class DeviceListAdapter(
     class ViewHolder(
         private val context: Context,
         private val binding: DeviceListItemBinding,
-        private val _bind: (BluetoothDevice, DeviceListItemBinding) -> Unit
+        private val _bind: (Bluetooth.Device, DeviceListItemBinding) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(element: BluetoothDevice) = _bind(element, binding)
+        fun bind(element: Bluetooth.Device) = _bind(element, binding)
 
         fun highlight() {
             binding.root.backgroundTintList = ColorStateList.valueOf(context.resources.getColor(R.color.selected))
@@ -34,10 +33,9 @@ class DeviceListAdapter(
     override fun getItemCount(): Int = devices?.size ?: 0
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        devices?.elementAt(position)?.let { holder.bind(it) }
-
-        if(position == connectedDeviceIndex) {
-            holder.highlight()
+        devices?.elementAt(position)?.let {
+            holder.bind(it)
+            if(it.connected) { holder.highlight() }
         }
     }
 

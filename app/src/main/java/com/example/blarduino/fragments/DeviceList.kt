@@ -38,24 +38,16 @@ class DeviceList : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.deviceListRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        val deviceIndex = viewModel.bluetoothAlreadyConnected()
-        val adapter = DeviceListAdapter(requireContext(), viewModel.devices, deviceIndex) {
+        val adapter = DeviceListAdapter(requireContext(), viewModel.devices) {
             viewModel.onDeviceItemClick(it)
         }
         binding.deviceListRecyclerView.adapter = adapter
 
         viewModel.connectionState.observe(viewLifecycleOwner) {
-            val index = it.first
-            val previousConnection = it.second
-
-            if(index == -1) {
+            if(it == DeviceListViewModel.CONNECTION_FAILED) {
                 Toast.makeText(requireContext(), "Connection to device failed!", Toast.LENGTH_LONG).show()
             } else {
-                if(!previousConnection) {
-                    Toast.makeText(requireContext(), "Connection successful", Toast.LENGTH_SHORT).show()
-                }
-                val vh = binding.deviceListRecyclerView.findViewHolderForAdapterPosition(index) as DeviceListAdapter.ViewHolder
-                vh.highlight()
+                adapter.notifyDataSetChanged()
             }
         }
 

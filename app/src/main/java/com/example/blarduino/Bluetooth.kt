@@ -23,12 +23,14 @@ class Bluetooth {
     class NotEnabledException : Exception()
     class MissingPermissionException : Exception()
 
+    data class Device(val name: String, val address: String, var connected: Boolean)
+
     public interface IncomingMessageListener {
         fun onIncomingMessage(message: String)
     }
 
     public interface ConnectionStateListener {
-        fun onConnectionSuccessful(index: Int, previousConnection: Boolean)
+        fun onConnectionSuccessful(index: Int)
         fun onConnectionFailed()
     }
 
@@ -67,12 +69,16 @@ class Bluetooth {
                     connectedThread!!.start()
 
                     connectionStateListeners.forEach {
-                        it.onConnectionSuccessful(pairedDevices!!.indexOf(device), false)
+//                        it.onConnectionSuccessful(pairedDevices!!.indexOf(device), false)
+                        //it.onConnectionFailed()
                     }
 
+
                 } catch (e: Exception) {
+                    println("AICI")
                     connectionStateListeners.forEach {
-                        it.onConnectionFailed()
+                        it.onConnectionSuccessful(pairedDevices!!.indexOf(device))
+//                        it.onConnectionFailed()
                     }
                 }
             }
@@ -142,9 +148,25 @@ class Bluetooth {
     }
 
     @SuppressLint("MissingPermission")
-    fun getConnectedDeviceName(): String {
+    fun getPairedDevices(): Set<Device>? {
+        return pairedDevices?.map {
+            Device(it.name, it.address, getConnectedDevice()?.address == it.address)
+        }?.toSet()
+    }
+
+    private fun getConnectedDevice(): BluetoothDevice? {
         return if(connectedThread != null) {
-            connectedThread!!.getRemoteDevice()!!.name
+            connectedThread!!.getRemoteDevice()
+        } else {
+            null
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    fun getConnectedDeviceName(): String {
+        val connectedDevice = getConnectedDevice()
+        return if(connectedDevice != null) {
+            connectedDevice.name
         } else {
             "No connected device"
         }
@@ -156,12 +178,6 @@ class Bluetooth {
 
     fun addConnectionStateListener(listener: ConnectionStateListener) {
         connectionStateListeners.add(listener)
-    }
-
-    fun connectedDeviceIndex(): Int {
-        return 2
-        val device = connectedThread?.getRemoteDevice()
-        return pairedDevices?.indexOf(device) ?: -1
     }
 
     fun connect(device: BluetoothDevice) {
@@ -182,5 +198,4 @@ class Bluetooth {
             connectedThread!!.write(message)
         }
     }
-
 }
