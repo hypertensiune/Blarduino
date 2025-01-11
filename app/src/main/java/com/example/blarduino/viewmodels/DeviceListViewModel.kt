@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
+import android.os.Handler
 import android.view.View
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.MutableLiveData
@@ -19,9 +20,10 @@ import com.example.blarduino.fragments.DeviceList
 class DeviceListViewModel(
     private val navController: NavController,
     private val bluetooth: Bluetooth
-) : ViewModel() {
+) : ViewModel(), Bluetooth.ConnectionStateListener {
 
-    val devices: MutableLiveData<Set<BluetoothDevice>> = MutableLiveData<Set<BluetoothDevice>>()
+    var devices: Set<BluetoothDevice>? = null
+    val connectionState: MutableLiveData<Pair<Int, Boolean>> = MutableLiveData<Pair<Int, Boolean>>()
 
     class Factory(private val navController: NavController) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
@@ -40,7 +42,21 @@ class DeviceListViewModel(
         val adapter: BluetoothAdapter? = bluetoothManager?.adapter
 
         val pairedDevices: Set<BluetoothDevice>? = adapter?.bondedDevices
-        devices.value = pairedDevices!!
+        devices = pairedDevices!!
+
+        bluetooth.addConnectionStateListener(this)
+    }
+
+    override fun onConnectionSuccessful(index: Int, previousConnection: Boolean) {
+        connectionState.postValue(Pair(index, previousConnection))
+    }
+
+    override fun onConnectionFailed() {
+        connectionState.postValue(Pair(-1, false))
+    }
+
+    fun bluetoothAlreadyConnected(): Int {
+        return bluetooth.connectedDeviceIndex()
     }
 
     fun onDeviceItemClick(deviceAddress: String) {

@@ -19,18 +19,17 @@ import kotlin.Exception
 
 class Bluetooth {
 
-    companion object {
-        const val CONNECTION_SUCCESSFUL = 0
-        const val CONNECTION_FAILED = 1
-        const val CONNECTED = 2
-    }
-
     class NotSupportedException : Exception()
     class NotEnabledException : Exception()
     class MissingPermissionException : Exception()
 
     public interface IncomingMessageListener {
         fun onIncomingMessage(message: String)
+    }
+
+    public interface ConnectionStateListener {
+        fun onConnectionSuccessful(index: Int, previousConnection: Boolean)
+        fun onConnectionFailed()
     }
 
     private val TAG = "Blarduino"
@@ -45,7 +44,8 @@ class Bluetooth {
     private var connectThread: ConnectThread? = null
     private var connectedThread: ConnectedThread? = null
 
-    private val listeners: MutableList<IncomingMessageListener> = mutableListOf()
+    private val incomingMessageListeners: MutableList<IncomingMessageListener> = mutableListOf()
+    private val connectionStateListeners: MutableList<ConnectionStateListener> = mutableListOf()
 
     /**
      * Thread for socket connection
@@ -60,22 +60,21 @@ class Bluetooth {
         override fun run() {
             //adapter.cancelDiscovery()
             socket?.let {
-                val msg = Message.obtain()
-                msg.arg1 = pairedDevices!!.indexOf(device)
-
                 try {
                     socket.connect()
 
                     connectedThread = ConnectedThread(socket)
                     connectedThread!!.start()
 
-                    msg.what = CONNECTION_SUCCESSFUL
+                    connectionStateListeners.forEach {
+                        it.onConnectionSuccessful(pairedDevices!!.indexOf(device), false)
+                    }
 
                 } catch (e: Exception) {
-                    msg.what = CONNECTION_FAILED
+                    connectionStateListeners.forEach {
+                        it.onConnectionFailed()
+                    }
                 }
-
-                handler?.sendMessage(msg)
             }
         }
 
@@ -152,18 +151,15 @@ class Bluetooth {
     }
 
     fun addIncomingMessageListener(listener: IncomingMessageListener) {
-        listeners.add(listener)
+        incomingMessageListeners.add(listener)
     }
 
-    fun removeIncomingMessageListener(listener: IncomingMessageListener) {
-        listeners.remove(listener)
-    }
-
-    fun setHandler(handler: Handler) {
-        this.handler = handler
+    fun addConnectionStateListener(listener: ConnectionStateListener) {
+        connectionStateListeners.add(listener)
     }
 
     fun connectedDeviceIndex(): Int {
+        return 2
         val device = connectedThread?.getRemoteDevice()
         return pairedDevices?.indexOf(device) ?: -1
     }
