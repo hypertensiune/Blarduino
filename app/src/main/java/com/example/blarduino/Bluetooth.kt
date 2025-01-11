@@ -73,7 +73,6 @@ class Bluetooth {
 
 
                 } catch (e: Exception) {
-                    println("AICI")
                     connectionStateListeners.forEach {
                         it.onConnectionFailed()
                     }
