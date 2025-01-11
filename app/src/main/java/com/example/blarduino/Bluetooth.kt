@@ -142,6 +142,15 @@ class Bluetooth {
         pairedDevices = adapter?.bondedDevices
     }
 
+    @SuppressLint("MissingPermission")
+    fun getConnectedDeviceName(): String {
+        return if(connectedThread != null) {
+            connectedThread!!.getRemoteDevice()!!.name
+        } else {
+            "No connected device"
+        }
+    }
+
     fun addIncomingMessageListener(listener: IncomingMessageListener) {
         listeners.add(listener)
     }

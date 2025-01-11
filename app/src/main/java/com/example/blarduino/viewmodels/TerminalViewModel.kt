@@ -16,6 +16,13 @@ class TerminalViewModel(
 
     val messages: MutableLiveData<MutableList<TerminalMessage>> = MutableLiveData(mutableListOf())
 
+    val connectedDeviceName: String
+        get() = bluetooth.getConnectedDeviceName()
+
+    init {
+        bluetooth.addIncomingMessageListener(this)
+    }
+
     class Factory(private val navController: NavController) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(
