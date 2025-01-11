@@ -23,7 +23,7 @@ class Bluetooth {
     class NotEnabledException : Exception()
     class MissingPermissionException : Exception()
 
-    data class Device(val name: String, val address: String, var connected: Boolean)
+    data class Device(val name: String, val address: String, var connected: Boolean, var connecting: Boolean)
 
     public interface IncomingMessageListener {
         fun onIncomingMessage(message: String)
@@ -146,7 +146,7 @@ class Bluetooth {
     @SuppressLint("MissingPermission")
     fun getPairedDevices(): Set<Device>? {
         return pairedDevices?.map {
-            Device(it.name, it.address, getConnectedDevice()?.address == it.address)
+            Device(it.name, it.address, getConnectedDevice()?.address == it.address, false)
         }?.toSet()
     }
 

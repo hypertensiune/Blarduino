@@ -25,6 +25,7 @@ class DeviceListViewModel(
     companion object {
         const val CONNECTION_SUCCESSFUL = 0
         const val CONNECTION_FAILED = 1
+        const val CONNECTING = 2
     }
 
     var devices: Set<Bluetooth.Device>? = null
@@ -48,7 +49,10 @@ class DeviceListViewModel(
     }
 
     override fun onConnectionSuccessful(index: Int) {
-        devices?.forEach { it.connected = false }
+        devices?.forEach {
+            it.connected = false
+            it.connecting = false
+        }
         devices?.elementAtOrNull(index)?.connected = true
         connectionState.postValue(CONNECTION_SUCCESSFUL)
     }
@@ -58,6 +62,8 @@ class DeviceListViewModel(
     }
 
     fun onDeviceItemClick(deviceAddress: String) {
+        devices?.find { it.address == deviceAddress }?.connecting = true
+        connectionState.postValue(CONNECTING)
         bluetooth.connect(deviceAddress)
     }
 

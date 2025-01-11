@@ -44,7 +44,7 @@ class DeviceListAdapter(
         binding = DeviceListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ViewHolder(context, binding) { element, binding ->
-            binding.name = element.name
+            binding.name = element.name + if(element.connecting) " (Connecting...)" else ""
             binding.mac = element.address
             binding.root.setOnClickListener {
                 onItemClick(element.address)
