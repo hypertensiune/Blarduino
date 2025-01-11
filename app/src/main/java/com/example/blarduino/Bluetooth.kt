@@ -42,7 +42,6 @@ class Bluetooth {
     private lateinit var adapter: BluetoothAdapter
     private var pairedDevices: Set<BluetoothDevice>? = null
 
-    private var handler: Handler? = null
     private var connectThread: ConnectThread? = null
     private var connectedThread: ConnectedThread? = null
 
@@ -69,16 +68,14 @@ class Bluetooth {
                     connectedThread!!.start()
 
                     connectionStateListeners.forEach {
-//                        it.onConnectionSuccessful(pairedDevices!!.indexOf(device), false)
-                        //it.onConnectionFailed()
+                        it.onConnectionSuccessful(pairedDevices!!.indexOf(device))
                     }
 
 
                 } catch (e: Exception) {
                     println("AICI")
                     connectionStateListeners.forEach {
-                        it.onConnectionSuccessful(pairedDevices!!.indexOf(device))
-//                        it.onConnectionFailed()
+                        it.onConnectionFailed()
                     }
                 }
             }
