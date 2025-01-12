@@ -4,10 +4,9 @@
 ***
 
 <span>
-  <img  src="imgs/img1.png" width=47%></img>
-  <img  src="imgs/img2.png" width=48%></img> 
+  <img src="imgs/img1.jpeg" width=47%></img>
+  <img src="imgs/img2.jpeg" width=48%></img> 
 </span>
-
 
 ## Description
 
