@@ -117,7 +117,7 @@ class Bluetooth {
         }
 
         fun write(message: String) {
-
+            outputStream.write(message.toByteArray())
         }
     }
 
